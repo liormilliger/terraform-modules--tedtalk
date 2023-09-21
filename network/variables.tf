@@ -10,7 +10,3 @@ variable "KARMI_IP" {
   type        = string
   default = "147.235.208.237/32"
 }
-
-variable "azs" {
-  default = [for i in ["a", "b", "c", "d", "e", "f"] : "us-east-1${i}"]
-}

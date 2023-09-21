@@ -25,16 +25,6 @@ variable "subnets_1a" {
   description = "Subnets id for subnets in AZ us-east-1a"
 }
 
-variable "subnets_1b" {
-  type = string
-  description = "Subnets id for subnets in AZ us-east-1b"
-}
-
-variable "bucket_acl" {
-  type = string
-  description = "ACL for the bucket"
-}
-
 variable "NAME_TAG" {
   type = string
   description = "Tags by environment"

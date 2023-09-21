@@ -1,13 +1,13 @@
-resource "aws_vpc" "liorm-TF" {
+resource "aws_vpc" "liorm-TED" {
   cidr_block = "10.0.0.0/16"
 
   tags = {
-    Name = "liorm-TF-easy"
+    Name = "liorm-TED"
   }
 }
 
-resource "aws_subnet" "liorm-us-east-1a" {
-  vpc_id                  = aws_vpc.liorm-TF.id
+resource "aws_subnet" "us-east-1a" {
+  vpc_id                  = aws_vpc.liorm-TED.id
   cidr_block              = "10.0.1.0/24"
   map_public_ip_on_launch = true
   availability_zone       = "us-east-1a"
@@ -16,53 +16,38 @@ resource "aws_subnet" "liorm-us-east-1a" {
   }
 }
 
-resource "aws_subnet" "liorm-us-east-1b" {
-  vpc_id                  = aws_vpc.liorm-TF.id
-  cidr_block              = "10.0.2.0/24"
-  map_public_ip_on_launch = true
-  availability_zone       = "us-east-1b"
+resource "aws_internet_gateway" "liorm" {
+  vpc_id = aws_vpc.liorm-TED.id
   tags = {
-    Name = "liorm-us-east-1b"
-  }
-}
-
-resource "aws_internet_gateway" "liorm-TF" {
-  vpc_id = aws_vpc.liorm-TF.id
-  tags = {
-    Name = "liorm-TF"
+    Name = "liorm-TED"
   }
 }
 
 
-resource "aws_route_table" "liorm-TF" {
-  vpc_id = aws_vpc.liorm-TF.id
+resource "aws_route_table" "liorm" {
+  vpc_id = aws_vpc.liorm-TED.id
 
   tags = {
-    Name = "liorm-TF"
+    Name = "liorm-TED"
   }
 }
 
 
 resource "aws_route" "default_route" {
-  route_table_id         = aws_route_table.liorm-TF.id
+  route_table_id         = aws_route_table.liorm.id
   destination_cidr_block = "0.0.0.0/0"
-  gateway_id             = aws_internet_gateway.liorm-TF.id
+  gateway_id             = aws_internet_gateway.liorm.id
 }
 
 resource "aws_route_table_association" "liorm-pub-1a" {
-  subnet_id      = aws_subnet.liorm-us-east-1a.id
-  route_table_id = aws_route_table.liorm-TF.id
+  subnet_id      = aws_subnet.us-east-1a.id
+  route_table_id = aws_route_table.liorm.id
 }
 
-resource "aws_route_table_association" "liorm-pub-1b" {
-  subnet_id      = aws_subnet.liorm-us-east-1b.id
-  route_table_id = aws_route_table.liorm-TF.id
-}
-
-resource "aws_security_group" "liorm-TF-SG" {
+resource "aws_security_group" "liorm-TED-SG" {
   name        = "liorm-TF-SG"
   description = "Allow incoming HTTP traffic from your IP"
-  vpc_id      = aws_vpc.liorm-TF.id
+  vpc_id      = aws_vpc.liorm-TED.id
 
   ingress {
     from_port   = 80
