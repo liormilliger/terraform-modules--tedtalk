@@ -1,0 +1,41 @@
+variable "AMI" {
+  type        = string
+  description = "Image for ubuntu instance"
+  default = "ami-053b0d53c279acc90"
+}
+
+variable "TYPE" {
+  type        = string
+  description = "Instance type"
+  default = "t3.micro"
+}
+
+variable "vpc" {
+  type        = string
+  description = "vpc ID"
+}
+
+variable "security_group" {
+  type = string
+  description = "Security Group ID"
+}
+
+variable "subnets_1a" {
+  type = string
+  description = "Subnets id for subnets in AZ us-east-1a"
+}
+
+variable "subnets_1b" {
+  type = string
+  description = "Subnets id for subnets in AZ us-east-1b"
+}
+
+variable "bucket_acl" {
+  type = string
+  description = "ACL for the bucket"
+}
+
+variable "NAME_TAG" {
+  type = string
+  description = "Tags by environment"
+}
