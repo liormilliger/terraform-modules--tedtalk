@@ -12,7 +12,7 @@ terraform {
     key    = "data/terraform.tfstate"
     region = "us-east-1"
 
-    dynamodb_table = "liorm-lockstate"
+    # dynamodb_table = "liorm-lockstate"
   }
 }
 
