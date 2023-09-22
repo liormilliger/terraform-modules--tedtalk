@@ -16,7 +16,7 @@ resource "aws_instance" "liorm-TED" {
   availability_zone      = "us-east-1a"
   vpc_security_group_ids = [var.security_group]
 
-  user_data = file("./compute/userdata.sh")
+  user_data = file("../../docker-compose.yaml")
 
   tags = {
     Name = "TED-test-${var.NAME_TAG}"
