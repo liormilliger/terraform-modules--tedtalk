@@ -78,7 +78,7 @@ resource "aws_security_group" "liorm-TED-SG" {
   }
 }
 
-resource "aws_key_pair" "liorm-tf-key" {
-  key_name   = "liorm-tf-key"
-  public_key = file("~/.ssh/liorm-tf-key_rsa.pub")
-}
+# resource "aws_key_pair" "liorm-tf-key" {
+#   key_name   = "liorm-tf-key"
+#   public_key = file("~/.ssh/liorm-tf-key_rsa.pub")
+# }
