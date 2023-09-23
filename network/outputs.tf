@@ -18,7 +18,7 @@ output "subnets_1a" {
 #   value = aws_s3_bucket_acl.liorm-TF.id
 # }
 
-output "public_key_content" {
-  description = "public key for instance"
-  value = aws_key_pair.liorm-ted-key.public_key
-}
+# output "public_key_content" {
+#   description = "public key for instance"
+#   value = aws_key_pair.liorm-ted-key.public_key
+# }
