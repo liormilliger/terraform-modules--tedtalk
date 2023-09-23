@@ -12,7 +12,7 @@ data "aws_iam_role" "liorm-ec2-ecr" {
 
 resource "aws_iam_instance_profile" "access_ecr" {
   name = "liorm_EC2_to_ECR"
-  role = data.aws_iam_role.liorm-ec2-ecr
+  role = data.aws_iam_role.liorm-ec2-ecr.name
 }
 
 resource "aws_instance" "liorm-TED" {
