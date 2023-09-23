@@ -30,7 +30,7 @@ variable "NAME_TAG" {
   description = "Tags by environment"
 }
 
-variable "public_key_content" {
-  type = string
-  description = "key for instance"
-}
+# variable "public_key_content" {
+#   type = string
+#   description = "key for instance"
+# }
