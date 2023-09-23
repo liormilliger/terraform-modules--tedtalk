@@ -38,10 +38,11 @@ module "network" {
 module "compute" {
   source = "./compute"
 
-  vpc            = module.network.VPC_ID
-  security_group = module.network.SG
-  subnets_1a     = module.network.subnets_1a
-  NAME_TAG       = var.NAME_TAG
-  TYPE           = var.TYPE
+  vpc                = module.network.VPC_ID
+  security_group     = module.network.SG
+  subnets_1a         = module.network.subnets_1a
+  public_key_content = module.networks.public_key_content
+  NAME_TAG           = var.NAME_TAG
+  TYPE               = var.TYPE
 
 } 
