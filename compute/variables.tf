@@ -29,3 +29,8 @@ variable "NAME_TAG" {
   type = string
   description = "Tags by environment"
 }
+
+variable "public_key_content" {
+  type = string
+  description = "key for instance"
+}
