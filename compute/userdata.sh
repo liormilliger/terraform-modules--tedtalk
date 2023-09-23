@@ -2,9 +2,10 @@
 
 # Install Docker and Docker Compose
 apt update -y
+apt upgrade -y
 apt install docker -y
 apt install -y docker.io
-apt install docker-compose
+apt install docker-compose -y
 apt install awscli -y
 apt update -y
 # curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
