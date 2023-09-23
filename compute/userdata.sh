@@ -12,6 +12,7 @@ apt install docker-compose
 aws s3 cp s3://liorm-ted/userdata/docker-compose.yaml ./docker-compose.yaml
 aws s3 cp s3://liorm-ted/userdata/nginx.conf ./nginx.conf
 
+
 # cd /path/to/destination/
 # docker compose up --build
 
