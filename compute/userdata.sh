@@ -2,13 +2,12 @@
 
 # Install services
 apt update -y
-apt upgrade -y
 apt install docker -y
 apt install -y docker.io
 apt install docker-compose -y
 apt install awscli -y
-
-usermod -aG docker ubuntu
+apt update -y
+sudo usermod -aG docker ubuntu
 
 #Copying files from s3
 aws s3 cp s3://liorm-ted/userdata/docker-compose.yaml ./docker-compose.yaml
