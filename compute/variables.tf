@@ -30,6 +30,10 @@ variable "NAME_TAG" {
   description = "Tags by environment"
 }
 
+variable "KEY_NAME" {
+  type = string
+  default = "liorm-tf-key_rsa"
+}
 # variable "public_key_content" {
 #   type = string
 #   description = "key for instance"
