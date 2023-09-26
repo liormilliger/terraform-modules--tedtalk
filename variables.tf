@@ -32,3 +32,8 @@ variable "KARMI_IP" {
   type        = string
   description = "Karmi IP"
 }
+
+variable "Develeap_IP" {
+  type = string
+  description = "Develeap IP"
+}
