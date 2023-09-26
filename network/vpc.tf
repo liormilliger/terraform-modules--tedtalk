@@ -1,14 +1,14 @@
 resource "aws_vpc" "liorm-TED" {
-  cidr_block = "10.0.0.0/16"
+  cidr_block = "10.${count.index}.0.0/16"
 
   tags = {
-    Name = "liorm-TED"
+    Name = "liorm-TED${count.index}"
   }
 }
 
 resource "aws_subnet" "us-east-1a" {
   vpc_id                  = aws_vpc.liorm-TED.id
-  cidr_block              = "10.0.1.0/24"
+  cidr_block              = "10.${count.index}.1.0/24"
   map_public_ip_on_launch = true
   availability_zone       = "us-east-1a"
   tags = {
@@ -78,8 +78,3 @@ resource "aws_security_group" "liorm-TED-SG" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 }
-
-# resource "aws_key_pair" "liorm-ted-key" {
-#   key_name   = "liorm-ted-key"
-#   public_key = file("./.ssh/liorm-ted-key.pub")
-# }
