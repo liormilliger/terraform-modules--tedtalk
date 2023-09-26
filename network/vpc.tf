@@ -67,7 +67,7 @@ resource "aws_security_group" "liorm-TED-SG" {
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
-    cidr_blocks = ["${var.KARMI_IP}", "${var.HOME_IP}"]
+    cidr_blocks = ["${var.KARMI_IP}", "${var.HOME_IP}", "${var.Develeap_IP}"]
   }
 
   egress {
