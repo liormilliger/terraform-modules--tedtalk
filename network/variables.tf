@@ -10,3 +10,9 @@ variable "KARMI_IP" {
   type        = string
   default = "147.235.208.237/32"
 }
+
+variable "Develeap_IP" {
+  description = "IP at Develeap"
+  type        = string
+  default = "	5.28.129.66/32"
+}
