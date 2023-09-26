@@ -32,7 +32,7 @@ variable "NAME_TAG" {
 
 variable "KEY_NAME" {
   type = string
-  default = "liorm-tf-key_rsa"
+  default = "liorm-key"
 }
 # variable "public_key_content" {
 #   type = string
