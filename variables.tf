@@ -23,17 +23,17 @@ variable "TYPE" {
   description = "instance type"
 }
 
-variable "HOME_IP" {
-  type        = string
-  description = "Home IP"
-}
+# variable "HOME_IP" {
+#   type        = string
+#   description = "Home IP"
+# }
 
-variable "KARMI_IP" {
-  type        = string
-  description = "Karmi IP"
-}
+# variable "KARMI_IP" {
+#   type        = string
+#   description = "Karmi IP"
+# }
 
-variable "Develeap_IP" {
-  type = string
-  description = "Develeap IP"
-}
+# variable "Develeap_IP" {
+#   type = string
+#   description = "Develeap IP"
+# }
