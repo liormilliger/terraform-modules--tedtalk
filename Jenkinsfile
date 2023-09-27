@@ -25,7 +25,7 @@ pipeline {
                          --query "Reservations[].Instances[].LaunchTime" \
                          --output json > active_instances.txt """
                         
-                        sh "cat filtered_instances.txt"
+                        sh "cat active_instances.txt"
                     }
                 }
             }
