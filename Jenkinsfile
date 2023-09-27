@@ -15,10 +15,15 @@ pipeline {
                     credentialsId: 'AWS Credentials'
                 ]]) {
                     script {
-                    sh 'aws ec2 describe-instances --filters "Name=instance-state-name,Values=running" \
-                     --query "Reservations[].Instances[].{Name:Tags[?Key=='Name'].Value | [0], LaunchTime:LaunchTime}" \
-                     --output json > active_instances.json'
-                    sh "cat active_instances.json"
+                        sh 'aws ec2 describe-instances \
+                        --filters "Name=instance-state-name,Values=running" \
+                        --query "Reservations[].Instances[]" \
+                        --output json | jq -r ".[] | {Name: .Tags[] | select(.Key == \"Name\") | .Value, LaunchTime: .LaunchTime}" > active_instances.json'
+
+                        // sh 'aws ec2 describe-instances --filters "Name=instance-state-name,Values=running" \
+                        //  --query "Reservations[].Instances[].{Name:Tags[?Key==`Name`].Value | [0], LaunchTime:LaunchTime}" \
+                        //  --output json > active_instances.json'
+                        sh "cat active_instances.json"
                     }
                 }
             }
