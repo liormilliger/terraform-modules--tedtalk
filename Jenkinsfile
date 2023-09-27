@@ -31,7 +31,7 @@ pipeline {
 
 
                         sh """ aws ec2 describe-instances
-                            --filters "Name=liorm,Values=running" \
+                            --filters "Name=instance-state-name,Values=running" \
                             --query "Reservations[].Instances[].InstanceId" \
                             > active_instances.txt
                             cat active_instances.txt
