@@ -3,12 +3,12 @@ data "aws_iam_role" "liorm-ec2-ecr" {
 }
 
 resource "aws_iam_instance_profile" "access_ecr" {
-  name = "liorm_EC2_to_ECR"
+  name = "liorm_EC2_to_ECR-${terraform.workspace}"
   role = data.aws_iam_role.liorm-ec2-ecr.name
 }
 
 resource "aws_instance" "liorm-TED" {
-  count = terraform.workspace == "default" ? 1 : 3
+  count = terraform.workspace == "default" ? 1 : 2
   ami                    = var.AMI
   instance_type          = var.TYPE
   key_name               = var.KEY_NAME
@@ -20,6 +20,6 @@ resource "aws_instance" "liorm-TED" {
   user_data = file("./compute/userdata.sh")
 
   tags = {
-    Name = "TED-test-${var.NAME_TAG}"
+    Name = "TED-test-${var.NAME_TAG}-${terraform.workspace}"
   }
 }
