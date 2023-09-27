@@ -29,7 +29,7 @@ pipeline {
 
 
                         sh """ aws ec2 describe-instances --filters "Name=instance-state-name,Values=running" \
-                            --query "Reservations[].Instances[].Name" \
+                            --query "Reservations[].Instances[].LaunchTime" \
                             > active_instances.txt
                             cat active_instances.txt
                         """
