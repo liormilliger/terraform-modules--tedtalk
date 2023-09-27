@@ -23,19 +23,30 @@ pipeline {
                         // --output json | jq -r "LaunchTime: .LaunchTime" > filtered_instances.json
                         // """
 
-// sh """aws ec2 describe-instances \
-// --filters "Name=instance-state-name,Values=running" \
-//   --query "Reservations[].Instances[] | {Name: Tags[?Key=='Name'] | [0].Value, LaunchTime: LaunchTime}" \
-//   --output json > active_instances.json"""
+                        // sh """aws ec2 describe-instances \
+                        // --filters "Name=instance-state-name,Values=running" \
+                        // --query "Reservations[].Instances[] | {Name: Tags[?Key=='Name'] | [0].Value, LaunchTime: LaunchTime}" \
+                        // --output json > active_instances.json"""
 
+                        def instancesOutput = sh(
+                            script: """
+                                aws ec2 describe-instances \
+                                --region ${AWS_REGION} \
+                                --filters "Name=tag:Name,Value=TED-test-liorm*" "Name=instance-state-name,Values=running" \
+                                --query 'Reservations[*].Instances[*].InstanceId' \
+                                --output text
+                            """,
+                            returnStdout: true
+                        ).trim().tokenize()
 
-
-                        sh """ aws ec2 describe-instances
-                            --filters "Name=instance-state-name,Values=running" \
-                            --query "Reservations[].Instances[].InstanceId" \
-                            > active_instances.txt
-                            cat active_instances.txt
-                        """
+                        // echo "${instancesOutput}"
+                        // sh """ aws ec2 describe-instances
+                        //     --region ${AWS_REGION}
+                        //     --filters "Name=instance-state-name,Values=running" "Name=Name,Value=TED-test-liorm*" \
+                        //     --query "Reservations[].Instances[].InstanceId" \
+                        //     > active_instances.txt
+                        //     cat active_instances.txt
+                        // """
 
                         // sh """
                         //     for (instance in active_instances){
