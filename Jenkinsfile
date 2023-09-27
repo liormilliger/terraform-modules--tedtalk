@@ -31,7 +31,6 @@ pipeline {
 
 
                         sh """ aws ec2 describe-instances
-                            --region ${AWS_REGION} \
                             --filters "Name=liorm,Values=running" \
                             --query "Reservations[].Instances[].InstanceId" \
                             > active_instances.txt
