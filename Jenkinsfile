@@ -32,7 +32,7 @@ pipeline {
                             script: """
                                 aws ec2 describe-instances \
                                 --region ${AWS_REGION} \
-                                --filters "Name=tag:Name,Value=TED-test-liorm*" "Name=instance-state-name,Values=running" \
+                                --filters "Name=tag:Name,Values=TED-test-liorm*" "Name=instance-state-name,Values=running" \
                                 --query 'Reservations[*].Instances[*].InstanceId' \
                                 --output text
                             """,
