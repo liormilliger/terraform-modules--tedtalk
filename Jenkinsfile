@@ -39,7 +39,7 @@ pipeline {
                             returnStdout: true
                         ).trim().tokenize()
 
-                        // echo "${instancesOutput}"
+                        echo "${instancesOutput}"
                         // sh """ aws ec2 describe-instances
                         //     --region ${AWS_REGION}
                         //     --filters "Name=instance-state-name,Values=running" "Name=Name,Value=TED-test-liorm*" \
