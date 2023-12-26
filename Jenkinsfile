@@ -14,7 +14,7 @@ pipeline {
             steps {
                 withCredentials([[
                     $class: 'AmazonWebServicesCredentialsBinding',
-                    credentialsId: 'AWS Credentials'
+                    credentialsId: 'AWS-Credentials'
                 ]]) {
                     script {
                         // sh """aws ec2 describe-instances \
